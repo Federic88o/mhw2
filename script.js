@@ -1,7 +1,6 @@
 /* TODO: inserite il codice JavaScript necessario a completare il MHW! */
 function SelezionaImmagine(event){
 
-  /* Ci permette di cambiare risposta */
   const immagine_non_selezionata_prec = event.currentTarget.parentNode.querySelectorAll(".non_selezionato");
   const immagine_selezionata_prec = event.currentTarget.parentNode.querySelector(".selezionato");
   if(immagine_selezionata_prec){
@@ -18,7 +17,6 @@ for(const box of immagine_non_selezionata_prec){
   event.currentTarget.classList.add("selezionato");
 
   const lista_blocchi = event.currentTarget.parentNode.querySelectorAll(".choice-grid div");
-  /* lista_blocchi è una lista che contiene i blocchi di una stessa sezione con stesso nodo genitore */
   for(const box of lista_blocchi){
       if(box !== event.currentTarget){
           box.classList.add("non_selezionato");
@@ -26,11 +24,8 @@ for(const box of immagine_non_selezionata_prec){
   }
   
   const immagine_scelta = document.querySelectorAll(".selezionato");  
-/*Se sono state selezionate tre immagini otterò il risulato finale */
   if(immagine_scelta.length === 3){
       for(const box of boxes){
-        /* Rimuoviamo la funzione perchè allora potrei continuare a 
-        selezionare immagini anche se il test è terminato */
           box.removeEventListener('click', SelezionaImmagine);
       }
       if(immagine_scelta[1].dataset.choiceId === immagine_scelta[2].dataset.choiceId){
